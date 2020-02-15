@@ -1,11 +1,13 @@
 const webpack = require('webpack');
+const merge = require('webpack-merge');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const common = require('./webpack.common.js');
 
-console.log({ MODE: process.env.NODE_ENV });
+console.log('WEBPACK_CLIENT_ENV:', process.env.NODE_ENV);
 
-module.exports = {
+module.exports = merge(common, {
   entry: ['./src/client/index.tsx', './src/client/scss/style.scss'],
   mode: process.env.NODE_ENV,
   output: {
@@ -13,9 +15,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist/public'),
   },
   devtool: 'eval-source-map',
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
-  },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
@@ -33,15 +32,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts(x?)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'ts-loader',
-          },
-        ],
-      },
-      {
         enforce: 'pre',
         test: /\.js$/,
         loader: 'source-map-loader',
@@ -57,15 +47,13 @@ module.exports = {
       },
     ],
   },
+
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      'process.env.API_URL': JSON.stringify(process.env.API_URL),
-    }),
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: 'template/index.html',
       filename: './index.html',
       title: 'Node React Typescript Client Side Boilerplate',
     }),
   ],
-};
+});
