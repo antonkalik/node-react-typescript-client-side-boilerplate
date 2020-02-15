@@ -1,6 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+console.log({ MODE: process.env.NODE_ENV });
 
 module.exports = {
   entry: ['./src/client/index.tsx', './src/client/scss/style.scss'],
@@ -9,7 +12,6 @@ module.exports = {
     filename: 'bundle_client.js',
     path: path.resolve(__dirname, 'dist/public'),
   },
-
   devtool: 'eval-source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
@@ -47,7 +49,7 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          'style-loader',
+          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
           { loader: 'css-loader', options: { sourceMap: true } },
           'postcss-loader',
           'sass-loader',

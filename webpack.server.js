@@ -4,11 +4,11 @@ const webpackNodeExternals = require('webpack-node-externals');
 
 module.exports = {
   entry: ['./src/server/index.ts'],
+  mode: process.env.NODE_ENV,
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle_server.js',
   },
-  watch: true,
   target: 'node',
   module: {
     rules: [
@@ -19,7 +19,6 @@ module.exports = {
       },
     ],
   },
-  mode: 'development',
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },

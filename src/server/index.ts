@@ -9,6 +9,8 @@ dotenv.config();
 
 const PORT = process.env.PORT || 9999;
 
+console.log({ ENV: process.env.NODE_ENV });
+
 const app = express();
 app.use('/', express.static('dist/public'));
 app.use(bodyParser.json());
