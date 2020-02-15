@@ -24,10 +24,8 @@ module.exports = {
     hot: true,
     stats: { colors: true },
     proxy: {
-      '/api/**': {
-        target: process.env.API_URL,
-        changeOrigin: true,
-      },
+      '/api': 'http://localhost:9999',
+      changeOrigin: true,
     },
   },
   module: {
