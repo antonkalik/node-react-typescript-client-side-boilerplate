@@ -12,7 +12,7 @@ module.exports = {
 
   devtool: 'eval-source-map',
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
