@@ -47,7 +47,6 @@ module.exports = merge(common, {
       },
     ],
   },
-
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({

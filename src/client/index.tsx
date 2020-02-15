@@ -1,8 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
-import { Hello } from './App';
+import { App } from './App';
 
 console.log({ clientENV: process.env.NODE_ENV });
 
-ReactDOM.render(<Hello compiler="TypeScript" framework="React" />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
