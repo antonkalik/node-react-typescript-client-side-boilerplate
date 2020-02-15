@@ -56,7 +56,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.ProgressPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.API_URL': JSON.stringify(process.env.API_URL),
