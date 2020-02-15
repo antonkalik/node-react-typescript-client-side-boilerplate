@@ -17,7 +17,7 @@
     "del": "node ./scripts/delete.js",
     "update": "node scripts/update.js"
   },
-  "main": "src/index.tsx",
+  "main": "src/client/index.tsx",
   "bugs": {
     "url": "https://github.com/antonkalik/node-react-typescript-client-side-boilerplate/issues"
   },

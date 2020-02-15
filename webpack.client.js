@@ -3,16 +3,16 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: ['./src/index.tsx', './src/scss/style.scss'],
+  entry: ['./src/client/index.tsx', './src/client/scss/style.scss'],
   mode: process.env.NODE_ENV,
   output: {
     filename: 'bundle_client.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist/public'),
   },
 
   devtool: 'eval-source-map',
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
@@ -37,14 +37,14 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "ts-loader"
-          }
-        ]
+            loader: 'ts-loader',
+          },
+        ],
       },
       {
-        enforce: "pre",
+        enforce: 'pre',
         test: /\.js$/,
-        loader: "source-map-loader"
+        loader: 'source-map-loader',
       },
       {
         test: /\.(sa|sc|c)ss$/,

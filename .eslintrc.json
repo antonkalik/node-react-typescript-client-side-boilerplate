@@ -1,7 +1,10 @@
 {
   "env": {
+    "es6": true,
     "browser": true,
-    "es6": true
+    "node": true,
+    "mocha": true,
+    "jest": true
   },
   "extends": [
     "eslint:recommended",
@@ -23,7 +26,20 @@
   "plugins": ["react", "prettier", "@typescript-eslint"],
   "rules": {
     "no-undef": 2,
-    "no-unused-vars": 2,
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": false
+      }
+    ],
     "prettier/prettier": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
